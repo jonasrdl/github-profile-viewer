@@ -58,9 +58,16 @@ class Hero extends React.Component {
         <img src={this.state.data.avatar_url} alt="Avatar" />
         <p>Real name: {this.state.data.name || '/'}</p>
         <p>Username: {this.state.data.login || '/'}</p>
-        <p>Profile link: {this.state.data.html_url || '/'}</p>
+        <p>
+          Profile link:{' '}
+          <a href={this.state.data.html_url} target="_blank">
+            {this.state.data.html_url}
+          </a>
+        </p>
         <p>Company: {this.state.data.company || '/'}</p>
-        <p>Website: {this.state.data.blog || '/'}</p>
+        <p>
+          Website: <a href={this.state.data.blog}>{this.state.data.blog}</a>
+        </p>
         <p>Location: {this.state.data.location || '/'}</p>
         <p>Twitter: {this.state.data.twitter_username || '/'}</p>
         <p>Email: {this.state.data.email || '/'}</p>

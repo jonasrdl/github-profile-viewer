@@ -1,5 +1,5 @@
 import React from 'react'
-const axios = require('axios')
+const axios = require('axios').default
 const API = 'https://api.github.com'
 
 class Hero extends React.Component {
@@ -14,7 +14,7 @@ class Hero extends React.Component {
   }
 
   fetchUser(username) {
-    axios.default
+    axios
       .get(API + `/users/${username}`)
       .then((result) => {
         this.setState({
@@ -66,10 +66,18 @@ class Hero extends React.Component {
         </p>
         <p>Company: {this.state.data.company || '/'}</p>
         <p>
-          Website: <a href={this.state.data.blog}>{this.state.data.blog}</a>
+          Website:{' '}
+          <a href={this.state.data.blog} target="_blank">
+            {this.state.data.blog}
+          </a>
         </p>
         <p>Location: {this.state.data.location || '/'}</p>
-        <p>Twitter: {this.state.data.twitter_username || '/'}</p>
+        <p>
+          Twitter:{' '}
+          <a href={`https://twitter.com/${this.state.data.twitter_username}`} target="_blank">
+            {this.state.data.twitter_username}
+          </a>
+        </p>
         <p>Email: {this.state.data.email || '/'}</p>
         <p>Followers: {this.state.data.followers || '/'}</p>
         <p>Following: {this.state.data.following || '/'}</p>

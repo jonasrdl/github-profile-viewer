@@ -55,7 +55,7 @@ class Hero extends React.Component {
             type="submit"
             onClick={(e) => {
               e.preventDefault()
-              this.fetchUser(this.state.value)
+              this.fetchUser(this.state.username)
             }}
           >
             Search

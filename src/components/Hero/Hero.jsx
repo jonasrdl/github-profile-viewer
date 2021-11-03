@@ -15,6 +15,55 @@ class Hero extends React.Component {
     }
   }
 
+  returnError() {
+    return (
+      <>
+        <div>
+          <form>
+            <input
+              value={this.state.inputValue}
+              onChange={(e) => this.setState({ inputValue: e.target.value })}
+            />
+            <button
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault()
+                this.fetchUser(this.state.inputValue)
+              }}
+            >
+              Search
+            </button>
+          </form>
+        </div>
+
+        <div>Invalid username, try again.</div>
+      </>
+    )
+  }
+
+  returnDataNotLoaded() {
+    return (
+      <div>
+        <form>
+          <input
+            type="text"
+            value={this.state.username}
+            onChange={(e) => this.setState({ username: e.target.value })}
+          />
+          <button
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault()
+              this.fetchUser(this.state.value)
+            }}
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    )
+  }
+
   fetchUser(username) {
     axios
       .get(API + `/users/${username}`)
@@ -38,52 +87,11 @@ class Hero extends React.Component {
     const { DataIsLoaded, data, username, error, inputValue } = this.state
 
     if (this.state.error === true) {
-      return (
-        <>
-          <div>
-            <form>
-              <input
-                value={this.state.inputValue}
-                onChange={(e) => this.setState({ inputValue: e.target.value })}
-              />
-              <button
-                type="submit"
-                onClick={(e) => {
-                  e.preventDefault()
-                  this.fetchUser(this.state.inputValue)
-                }}
-              >
-                Search
-              </button>
-            </form>
-          </div>
-
-          <div>Invalid username, try again.</div>
-        </>
-      )
+      return this.returnError()
     }
 
     if (!DataIsLoaded) {
-      return (
-        <div>
-          <form>
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={(e) => this.setState({ username: e.target.value })}
-            />
-            <button
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault()
-                this.fetchUser(this.state.value)
-              }}
-            >
-              Search
-            </button>
-          </form>
-        </div>
-      )
+      return this.returnDataNotLoaded()
     }
 
     return (

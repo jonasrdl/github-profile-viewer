@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Hero.css'
 const axios = require('axios').default
 const API = 'https://api.github.com'
@@ -9,69 +10,19 @@ class Hero extends React.Component {
 
     this.state = {
       data: [],
-      DataIsLoaded: false,
+      usernameFromUrl: this.props.match.params.username,
       error: false,
       inputValue: '',
       username: ''
     }
   }
 
-  returnError() {
-    return (
-      <>
-        <div>
-          <form>
-            <input
-              value={this.state.inputValue}
-              onChange={(e) => this.setState({ inputValue: e.target.value })}
-            />
-            <button
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault()
-                this.fetchUser(this.state.inputValue)
-              }}
-            >
-              Search
-            </button>
-          </form>
-        </div>
-
-        <div>Invalid username, try again.</div>
-      </>
-    )
-  }
-
-  returnDataNotLoaded() {
-    return (
-      <div>
-        <form>
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={(e) => this.setState({ username: e.target.value })}
-          />
-          <button
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault()
-              this.fetchUser(this.state.username)
-            }}
-          >
-            Search
-          </button>
-        </form>
-      </div>
-    )
-  }
-
-  fetchUser(username) {
+  componentDidMount() {
     axios
-      .get(API + `/users/${username}`)
+      .get(API + `/users/${this.state.usernameFromUrl}`)
       .then((result) => {
         this.setState({
           data: result.data,
-          DataIsLoaded: true,
           error: false
         })
       })
@@ -84,15 +35,15 @@ class Hero extends React.Component {
       })
   }
 
+  returnError() {
+    window.location.href = '/error'
+  }
+
   render() {
-    const { DataIsLoaded, data, username, error, inputValue } = this.state
+    console.log(this.state.usernameFromUrl)
 
     if (this.state.error === true) {
       return this.returnError()
-    }
-
-    if (!DataIsLoaded) {
-      return this.returnDataNotLoaded()
     }
 
     return (

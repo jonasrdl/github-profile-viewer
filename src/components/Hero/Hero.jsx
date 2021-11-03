@@ -10,6 +10,7 @@ class Hero extends React.Component {
       data: [],
       DataIsLoaded: false,
       error: false,
+      inputValue: '',
       username: ''
     }
   }
@@ -34,7 +35,7 @@ class Hero extends React.Component {
   }
 
   render() {
-    const { DataIsLoaded, data, username, error } = this.state
+    const { DataIsLoaded, data, username, error, inputValue } = this.state
 
     if (this.state.error === true) {
       return (
@@ -42,15 +43,14 @@ class Hero extends React.Component {
           <div>
             <form>
               <input
-                type="text"
-                value={' '}
-                onChange={(e) => this.setState({ username: e.target.value })}
+                value={this.state.inputValue}
+                onChange={(e) => this.setState({ inputValue: e.target.value })}
               />
               <button
                 type="submit"
                 onClick={(e) => {
                   e.preventDefault()
-                  this.fetchUser(this.state.username)
+                  this.fetchUser(this.state.inputValue)
                 }}
               >
                 Search
@@ -62,10 +62,6 @@ class Hero extends React.Component {
         </>
       )
     }
-
-    this.setState({
-      error: false
-    })
 
     if (!DataIsLoaded) {
       return (
@@ -80,7 +76,7 @@ class Hero extends React.Component {
               type="submit"
               onClick={(e) => {
                 e.preventDefault()
-                this.fetchUser(this.state.username)
+                this.fetchUser(this.state.value)
               }}
             >
               Search

@@ -63,6 +63,10 @@ class Hero extends React.Component {
       )
     }
 
+    this.setState({
+      error: false
+    })
+
     if (!DataIsLoaded) {
       return (
         <div>

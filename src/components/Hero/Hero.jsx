@@ -9,7 +9,8 @@ class Hero extends React.Component {
     this.state = {
       data: [],
       DataIsLoaded: false,
-      username: '',
+      error: false,
+      username: ''
     }
   }
 
@@ -20,15 +21,47 @@ class Hero extends React.Component {
         this.setState({
           data: result.data,
           DataIsLoaded: true,
+          error: false
         })
       })
       .catch((error) => {
         console.log(error)
+
+        this.setState({
+          error: true
+        })
       })
   }
 
   render() {
-    const { DataIsLoaded, data, username } = this.state
+    const { DataIsLoaded, data, username, error } = this.state
+
+    if (this.state.error === true) {
+      return (
+        <>
+          <div>
+            <form>
+              <input
+                type="text"
+                value={' '}
+                onChange={(e) => this.setState({ username: e.target.value })}
+              />
+              <button
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault()
+                  this.fetchUser(this.state.username)
+                }}
+              >
+                Search
+              </button>
+            </form>
+          </div>
+
+          <div>Invalid username, try again.</div>
+        </>
+      )
+    }
 
     if (!DataIsLoaded) {
       return (

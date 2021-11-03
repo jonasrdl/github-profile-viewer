@@ -1,4 +1,5 @@
 import React from 'react'
+import './Hero.css'
 const axios = require('axios').default
 const API = 'https://api.github.com'
 
@@ -95,7 +96,7 @@ class Hero extends React.Component {
     }
 
     return (
-      <div>
+      <div className="main-container">
         <img src={this.state.data.avatar_url} alt="Avatar" />
         <p>Real name: {this.state.data.name || '/'}</p>
         <p>Username: {this.state.data.login || '/'}</p>

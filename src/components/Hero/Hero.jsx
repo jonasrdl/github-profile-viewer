@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './Hero.css'
 const axios = require('axios').default
 const API = 'https://api.github.com'

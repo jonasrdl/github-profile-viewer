@@ -1,0 +1,24 @@
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+div > form > input {
+  color: #fff;
+  background-color: #212121;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 1.3rem;
+}
+
+div > form > input:focus {
+  outline: none;
+}
+
+div > form > button {
+  margin-left: 1rem;
+}

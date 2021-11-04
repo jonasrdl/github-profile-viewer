@@ -1,3 +1,7 @@
+:root {
+  --transition: 0.2s;
+}
+
 div {
   display: flex;
   justify-content: center;
@@ -21,4 +25,23 @@ div > form > input:focus {
 
 div > form > button {
   margin-left: 1rem;
+  background-color: #212121;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+div > form > button:hover {
+  cursor: pointer;
+  color: #212121;
+  background-color: #fff;
+  transition: var(--transition);
+}
+
+@media screen and (max-width: 600px) {
+  div > form > input {
+    font-size: 1.2rem;
+    width: 10rem;
+  }
 }

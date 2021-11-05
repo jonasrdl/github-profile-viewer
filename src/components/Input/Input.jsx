@@ -29,7 +29,7 @@ class Input extends React.Component {
               if (
                 this.state.username === undefined ||
                 this.state.username === '' ||
-                REGEX.test(this.state.username)
+                !REGEX.test(this.state.username)
               ) {
                 window.location.href = '/error'
               } else {

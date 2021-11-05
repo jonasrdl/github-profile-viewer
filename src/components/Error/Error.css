@@ -1,0 +1,8 @@
+div > h1 {
+  color: #fff;
+  margin-right: 2rem;
+}
+
+div > .link {
+  font-size: 1.7rem;
+}

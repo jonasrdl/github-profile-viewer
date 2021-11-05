@@ -20,13 +20,13 @@ class Hero extends React.Component {
   componentDidMount() {
     axios
       .get(API + `/users/${this.state.usernameFromUrl}`)
-      .then((result) => {
+      .then(result => {
         this.setState({
           data: result.data,
           error: false
         })
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
 
         this.setState({
@@ -43,8 +43,6 @@ class Hero extends React.Component {
     if (this.state.error === true) {
       return this.returnError()
     }
-
-    console.log(this.state.data)
 
     return (
       <div className="main">

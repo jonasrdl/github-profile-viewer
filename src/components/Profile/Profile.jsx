@@ -1,10 +1,10 @@
 import React from 'react'
-import './Hero.css'
+import './Profile.css'
 import Link from '../Link/Link'
 const axios = require('axios').default
 const API = 'https://api.github.com'
 
-class Hero extends React.Component {
+class Profile extends React.Component {
   constructor(props) {
     super(props)
 
@@ -69,4 +69,4 @@ class Hero extends React.Component {
   }
 }
 
-export default Hero
+export default Profile

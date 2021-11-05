@@ -3,6 +3,7 @@ import './Hero.css'
 import Link from '../Link/Link'
 const axios = require('axios').default
 const API = 'https://api.github.com'
+const REGEX = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+$/g
 
 class Hero extends React.Component {
   constructor(props) {
@@ -14,6 +15,12 @@ class Hero extends React.Component {
       error: false,
       inputValue: '',
       username: ''
+    }
+  }
+
+  validateUsername() {
+    if (this.state.username === '' || REGEX.test(this.state.username)) {
+      this.returnError()
     }
   }
 

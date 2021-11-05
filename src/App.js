@@ -9,10 +9,9 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/" render={(props) => <Input {...props} />} />
-          <Route exact path="/profile/:username" render={(props) => <Hero {...props} />} />
-
-          <Route exact path="/error" render={(props) => <Error {...props} />} />
+          <Route exact path="/" render={props => <Input {...props} />} />
+          <Route exact path="/profile/:username" render={props => <Hero {...props} />} />
+          <Route exact path="/error" render={props => <Error {...props} />} />
         </Switch>
       </div>
     </Router>

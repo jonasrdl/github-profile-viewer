@@ -5,4 +5,4 @@ services:
     restart: always
     command: serve -s build
     ports:
-      - '8904:5000'
+      - '8904:3000'

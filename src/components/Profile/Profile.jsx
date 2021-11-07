@@ -57,6 +57,7 @@ class Profile extends React.Component {
           </p>
         )}
         <p>Email: {this.state.data.email || '/'}</p>
+        <p>Bio: {this.state.data.bio || '/'}</p>
         <p>Followers: {this.state.data.followers || '/'}</p>
         <p>Following: {this.state.data.following || '/'}</p>
         <p>Created at: {this.state.data.created_at || '/'}</p>

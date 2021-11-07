@@ -32,13 +32,9 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log(this.state.usernameFromUrl)
-
     return (
       <div className="main">
-        <div>
-          <img src={this.state.data.avatar_url} alt="Avatar" />
-        </div>
+        <img src={this.state.data.avatar_url} alt="Avatar" />
         <p>Real name: {this.state.data.name || '/'}</p>
         <p>Username: {this.state.data.login || '/'}</p>
         <p>

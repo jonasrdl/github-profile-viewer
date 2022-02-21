@@ -19,6 +19,7 @@ class Input extends React.Component {
           <input
             type="text"
             value={this.state.username}
+            placeholder="GitHub username (Case sensitive)"
             onChange={e => this.setState({ username: e.target.value })}
           />
           <button
